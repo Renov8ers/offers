@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sell Your House for Cash in Uniondale, NY | Renov8ers LLC</title>
+<meta name="description" content="Sell your Uniondale house as-is for cash. No repairs, no commissions, you pick the closing date. Get an offer from Renov8ers LLC.">
+<link rel="canonical" href="https://renov8ers.github.io/offers/sell/uniondale/">
+<meta name="theme-color" content="#ffffff">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../site.css?v=2">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LocalBusiness", "name": "Renov8ers LLC", "url": "https://renov8ers.github.io/offers/sell/uniondale/", "areaServed": {"@type": "City", "name": "Uniondale"}, "telephone": "6313836322", "email": "renov8ersllc@gmail.com", "description": "Cash home buyer in Uniondale, NY: as-is, no commissions."}</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="mark" href="../../" aria-label="Renov8ers LLC property acquisitions"><i>R8</i><span><b>RENOV8ERS LLC</b><small>Property Acquisitions</small></span></a>
+  <div class="contact"><span>Questions?</span><a href="tel:6313836322">6313836322</a><a href="mailto:renov8ersllc@gmail.com">Email us</a></div>
+</div></header>
+<main id="main">
+<div class="hero"><div class="wrap">
+  <span class="eyebrow">Uniondale, NY</span>
+  <h1>Sell your Uniondale house as-is, for cash.</h1>
+  <p>No repairs, no cleaning out, no agent commissions. You choose the closing date, and a local title company or closing attorney handles the paperwork and the funds.</p>
+</div></div>
+<section><div class="wrap" style="max-width:760px">
+  <div class="card form" id="formbox"><form id="f" novalidate>
+    <h2>Get a cash offer</h2><p class="sub">Tell us about the property. We reply within one business day. Free, and no obligation.</p>
+    <div class="field"><label for="address">Property address</label><input type="text" id="address" autocomplete="street-address" placeholder="Street, Uniondale"></div>
+    <div class="row2"><div class="field"><label for="name">Your name</label><input type="text" id="name" autocomplete="name"></div>
+      <div class="field"><label for="phone">Phone</label><input type="tel" id="phone" autocomplete="tel"></div></div>
+    <div class="row2"><div class="field"><label for="email">Email</label><input type="email" id="email" autocomplete="email"></div>
+      <div class="field"><label for="asking">Price you'd like <span class="hint">(optional)</span></label><input type="text" id="asking" inputmode="numeric"></div></div>
+    <div class="field"><label for="condition">Condition</label><select id="condition"><option value="">Choose one</option><option>Move-in ready</option><option>Needs some work</option><option>Needs major repairs</option><option>Vacant</option></select></div>
+    <div class="field"><label for="timeline">When would you like to sell?</label><select id="timeline"><option value="">Choose one</option><option>As soon as possible</option><option>Within 3 months</option><option>Within 6 months</option><option>Just exploring</option></select></div>
+    <input class="hp" tabindex="-1" autocomplete="off" id="website" aria-hidden="true">
+    <label class="consent"><input type="checkbox" id="consent"> <span>Contact me about selling this property. I can opt out at any time.</span></label>
+    <button class="btn btn-primary btn-block" type="submit" id="go">Get my cash offer</button><div class="msg err" id="err" role="alert"></div>
+  </form></div>
+  <div class="card" style="margin-top:16px"><h2>How it works</h2>
+    <p class="sub">1. Tell us about the house. 2. We look at recent sales nearby and make a written cash offer. 3. If it works for you, you sign online and pick the closing date. If it doesn't, you owe nothing.</p></div>
+</div></section>
+</main>
+<footer><div class="wrap">
+  <div><b>Renov8ers LLC</b> · Property Acquisitions · Long Island, New York · 6313836322</div>
+  <div>Renov8ers LLC is a real estate investment company, not a licensed real estate broker or agent. We buy properties for our own account and may assign our contract to another buyer. You are always free to consult an attorney or agent.</div>
+</div></footer>
+<script src="../../engine-config.js?v=1"></script>
+<script src="../../site.js?v=1"></script>
+<script>
+(function () {
+  var g = function (id) { return document.getElementById(id).value.trim(); }, er = document.getElementById('err');
+  document.getElementById('f').addEventListener('submit', function (e) {
+    e.preventDefault(); var go = document.getElementById('go');
+    function bad(m) { er.textContent = m; er.classList.add('show'); go.disabled = false; }
+    if (g('website')) return;
+    if (!g('address') || !g('name') || !(g('email') || g('phone'))) return bad('Please add the address, your name, and an email or phone number.');
+    if (!document.getElementById('consent').checked) return bad('Please tick the box so we can contact you.');
+    go.disabled = true;
+    RE.call('re-offer-reply', { address: g('address'), name: g('name'), phone: g('phone'), email: g('email'), asking: g('asking'), condition: g('condition'),
+      timeline: g('timeline'), notes: 'inbound: Uniondale, NY', town: 'Uniondale', state: 'NY', consent: true })
+      .then(function (r) { if (r && r.ok) document.getElementById('formbox').innerHTML = '<div class="done"><h2>Thank you.</h2><p class="sub">' + RE.esc(r.message || 'We received your details and will reply within one business day.') + '</p></div>'; else bad((r && r.error) || 'Something went wrong.'); })
+      .catch(function () { bad("We couldn't reach our offers system. Please call or email us instead."); });
+  });
+})();
+</script>
+</body>
+</html>
