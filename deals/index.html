@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Off-Market Deals | Renov8ers LLC</title>
+<meta name="description" content="Off-market, as-is properties from Renov8ers LLC for cash buyers.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#ffffff">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../site.css?v=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2316181d'/%3E%3Ctext x='16' y='21' font-family='Arial' font-weight='700' font-size='12' fill='%23e39b2a' text-anchor='middle'%3ER8%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="mark" href="../" aria-label="Renov8ers LLC property acquisitions"><i>R8</i><span><b>RENOV8ERS LLC</b><small>Property Acquisitions</small></span></a>
+  <div class="contact"><span>Questions?</span><a href="tel:+15169868621">(516) 986-8621</a><a href="mailto:renov8ersllc@gmail.com">Email us</a></div>
+</div></header>
+<main id="main">
+<div class="hero"><div class="wrap">
+  <span class="eyebrow">For cash buyers</span>
+  <h1>Off-market properties, under contract and ready to assign.</h1>
+  <p>As-is deals sent to our buyers list first. Claim one and sign the assignment online.</p>
+</div></div>
+<section><div class="wrap">
+  <div id="deal"></div>
+  <div class="deals" id="list"><p class="fine">Loading deals…</p></div>
+</div></section>
+<section style="padding-top:0"><div class="wrap" style="max-width:760px">
+  <div class="card form" id="joinbox"><form id="j" novalidate>
+    <h2>Join the buyers list</h2><p class="sub">New deals by email. Free, and you can unsubscribe at any time.</p>
+    <div class="row2"><div class="field"><label for="jn">Name or company</label><input type="text" id="jn" autocomplete="organization"></div><div class="field"><label for="je">Email</label><input type="email" id="je" autocomplete="email"></div></div>
+    <div class="row2"><div class="field"><label for="js">States you buy in <span class="hint">(e.g. NY, NJ)</span></label><input type="text" id="js"></div><div class="field"><label for="jz">ZIP codes <span class="hint">(optional)</span></label><input type="text" id="jz"></div></div>
+    <div class="row2"><div class="field"><label for="jm">Max price <span class="hint">(optional)</span></label><input type="text" id="jm" inputmode="numeric"></div><div class="field"><label for="jt">Property types <span class="hint">(single family, multi, land)</span></label><input type="text" id="jt"></div></div>
+    <input class="hp" tabindex="-1" autocomplete="off" id="jw" aria-hidden="true">
+    <label class="consent"><input type="checkbox" id="jc"> <span>Email me new deals. I can unsubscribe at any time.</span></label>
+    <button class="btn btn-primary btn-block" type="submit">Join the buyers list</button><div class="msg err" id="jerr" role="alert"></div>
+  </form></div>
+</div></section>
+</main>
+<footer><div class="wrap">
+  <div><b>Renov8ers LLC</b> · Property Acquisitions<br>Long Island, New York · (516) 986-8621 · <a href="mailto:renov8ersllc@gmail.com">renov8ersllc@gmail.com</a></div>
+  <div>Renov8ers LLC is a real estate investment company, not a licensed real estate broker or agent. We buy properties for our own account and may assign our contract to another buyer. You are always free to consult an attorney or agent.</div>
+</div></footer>
+<script src="../engine-config.js?v=1"></script>
+<script src="../site.js?v=1"></script>
+<script>
+(function () {
+  var d = RE.q('d'), list = document.getElementById('list'), deal = document.getElementById('deal'), TICK = '<div class="tick"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>';
+  function tags(x) { return '<div class="tags">' + (x.tags || []).map(function (t) { return '<span class="tag">' + RE.esc(t) + '</span>'; }).join('') + '</div>'; }
+  RE.call('re-deals', d ? { d: d } : {}).then(function (j) {
+    if (d) {
+      list.innerHTML = '';
+      if (!j || !j.ok) { deal.innerHTML = '<div class="card"><p class="sub">' + RE.esc((j && j.error) || 'This deal is not available.') + ' <a href="./">See all deals</a></p></div>'; return; }
+      var x = j.deal;
+      deal.innerHTML = '<div class="grid"><aside class="card offer"><div class="k">Assignment price</div><div class="addr">' + RE.esc(x.address) + '</div><div class="town">' + RE.esc([x.city, x.state].filter(Boolean).join(', ')) + '</div>' +
+        '<div class="amt">' + RE.money(x.price) + '</div><div class="amt-l">' + (x.value ? 'Estimated value ' + RE.money(x.value) : 'Assignment price') + '</div><div style="margin-top:16px">' + tags(x) + '</div>' +
+        '<p class="fine" style="margin-top:14px">Estimates only. Run your own comps and inspection.</p></aside>' +
+        '<div class="card form"><h2>Claim this deal</h2><p class="sub">' + RE.esc(j.disclosure || '') + '</p><form id="c" novalidate><div class="field"><label for="cn">Your name or company</label><input type="text" id="cn"></div>' +
+        '<div class="field"><label for="ce">Email</label><input type="email" id="ce"></div><button class="btn btn-primary btn-block" id="cgo">Claim it and send me the assignment</button><div class="msg err" id="cerr" role="alert"></div></form></div></div>';
+      document.getElementById('c').addEventListener('submit', function (e) {
+        e.preventDefault(); var er = document.getElementById('cerr'), go = document.getElementById('cgo');
+        function bad(m) { er.textContent = m; er.classList.add('show'); go.disabled = false; }
+        go.disabled = true;
+        RE.call('re-deal-claim', { d: d, name: document.getElementById('cn').value, email: document.getElementById('ce').value }).then(function (r) {
+          if (r && r.ok && r.sign) location.href = r.sign; else bad((r && r.error) || 'Something went wrong.');
+        }).catch(function () { bad('We couldn\'t reach our deals system. Please try again shortly.'); });
+      });
+      return;
+    }
+    var deals = (j && j.deals) || [];
+    list.innerHTML = deals.length ? deals.map(function (x) {
+      return '<a class="deal" href="?d=' + encodeURIComponent(x.d) + '"><div class="k">' + RE.esc([x.city, x.state].filter(Boolean).join(', ')) + '</div><div class="p">' + RE.money(x.price) + '</div>' + tags(x) + '</a>';
+    }).join('') : '<p class="fine">No open deals right now. Join the list below and you\'ll hear first.</p>';
+  }).catch(function () { list.innerHTML = '<p class="fine">Deals are loading slowly. Join the list below and we\'ll email you new ones.</p>'; });
+  document.getElementById('j').addEventListener('submit', function (e) {
+    e.preventDefault(); var g = function (id) { return document.getElementById(id).value.trim(); }, er = document.getElementById('jerr');
+    function bad(m) { er.textContent = m; er.classList.add('show'); }
+    if (!/^[^@\s]+@[^@\s]+\.\w+$/.test(g('je'))) return bad('Please add a valid email.');
+    if (!document.getElementById('jc').checked) return bad('Please tick the box so we can email you deals.');
+    RE.call('re-buyers-join', { name: g('jn'), email: g('je'), states: g('js'), zips: g('jz'), max_price: g('jm'), types: g('jt'), website: g('jw'), consent: true })
+      .then(function (r) { if (r && r.ok) document.getElementById('joinbox').innerHTML = '<div class="done">' + TICK + '<h2>You\'re on the list.</h2><p class="sub">New deals will arrive by email.</p></div>'; else bad((r && r.error) || 'Something went wrong.'); })
+      .catch(function () { bad('We couldn\'t reach our deals system. Please try again shortly.'); });
+  });
+})();
+</script>
+</body>
+</html>
