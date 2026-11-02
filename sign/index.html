@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sign Your Agreement | Renov8ers LLC</title>
+<meta name="description" content="Review and sign your agreement with Renov8ers LLC.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#ffffff">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../site.css?v=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2316181d'/%3E%3Ctext x='16' y='21' font-family='Arial' font-weight='700' font-size='12' fill='%23e39b2a' text-anchor='middle'%3ER8%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="mark" href="../" aria-label="Renov8ers LLC property acquisitions"><i>R8</i><span><b>RENOV8ERS LLC</b><small>Property Acquisitions</small></span></a>
+  <div class="contact"><span>Questions?</span><a href="tel:+15169868621">(516) 986-8621</a><a href="mailto:renov8ersllc@gmail.com">Email us</a></div>
+</div></header>
+<main id="main">
+<div class="hero"><div class="wrap" style="max-width:860px">
+  <span class="eyebrow">Secure e-signature</span>
+  <h1>Review and sign your agreement.</h1>
+  <p>Read the agreement below, then sign with your finger or mouse. A fully signed copy is emailed to you.</p>
+</div></div>
+<section><div class="wrap" style="max-width:860px">
+  <div class="card form" id="box"><p class="sub">Loading your agreement…</p></div>
+</div></section>
+</main>
+<footer><div class="wrap">
+  <div><b>Renov8ers LLC</b> · Property Acquisitions<br>Long Island, New York · (516) 986-8621 · <a href="mailto:renov8ersllc@gmail.com">renov8ersllc@gmail.com</a></div>
+  <div>Renov8ers LLC is a real estate investment company, not a licensed real estate broker or agent. We buy properties for our own account and may assign our contract to another buyer. You are always free to consult an attorney or agent.</div>
+</div></footer>
+<script src="../engine-config.js?v=1"></script>
+<script src="../site.js?v=1"></script>
+<script>
+(function () {
+  var box = document.getElementById('box'), t = RE.q('t'), TICK = '<div class="tick"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>';
+  function done(h, p) { box.innerHTML = '<div class="done">' + TICK + '<h2>' + h + '</h2><p class="sub">' + p + '</p></div>'; }
+  function note(m) { box.innerHTML = '<p class="sub">' + m + '</p>'; }
+  if (!t) return note('This signing link is incomplete. Use the link from our email, or reply to it and we\'ll send a new one.');
+  RE.call('re-doc-get', { token: t }).then(function (d) {
+    if (!d || !d.ok) return note(RE.esc((d && d.error) || 'This document is not available.'));
+    if (d.signed) return done('Already signed', 'This agreement has been signed. Thank you.');
+    var meta = (d.meta || []).map(function (m) { return '<span>' + RE.esc(m[0]) + '</span><div>' + RE.esc(m[1]) + '</div>'; }).join('');
+    var cls = (d.clauses || []).map(function (c) { return '<div class="cl"><i>' + RE.esc(c.n) + '</i><div>' + (c.head ? '<b>' + RE.esc(c.head) + '</b>' : '') + RE.esc(c.text) + '</div></div>'; }).join('');
+    var notes = (d.notes || []).map(function (n) { return '<p class="note">' + RE.esc(n) + '</p>'; }).join('');
+    box.innerHTML = '<div class="doc" tabindex="0"><div class="dk">' + (d.kind === 'assignment' ? 'Assignment of contract' : 'Purchase agreement') + '</div><h3>' + RE.esc(d.title) + '</h3><div class="meta">' + meta + '</div>' + cls + notes + '</div>' +
+      '<form id="f" novalidate style="margin-top:24px"><div class="row2"><div class="field"><label for="n">Full legal name (' + RE.esc(d.who) + ')</label><input type="text" id="n" autocomplete="name"></div>' +
+      '<div class="field"><label for="e">Email for your signed copy</label><input type="email" id="e" autocomplete="email"></div></div>' +
+      '<div class="field"><span class="lbl">Draw your signature</span><canvas class="pad" id="pad" aria-label="Signature pad"></canvas></div>' +
+      '<label class="consent"><input type="checkbox" id="c"> <span>I have read the agreement above and agree to sign it electronically.</span></label>' +
+      '<div class="row"><button class="btn btn-primary" id="go" type="submit">Sign the agreement</button><button class="btn btn-ghost" type="button" id="clr">Clear signature</button></div>' +
+      '<div class="msg err" id="err" role="alert"></div></form>';
+    var pad = RE.pad(document.getElementById('pad'));
+    document.getElementById('clr').onclick = function () { pad.clear(); };
+    document.getElementById('f').addEventListener('submit', function (ev) {
+      ev.preventDefault(); var er = document.getElementById('err'), go = document.getElementById('go');
+      var n = document.getElementById('n').value.trim(), e = document.getElementById('e').value.trim(), c = document.getElementById('c').checked;
+      function bad(m) { er.textContent = m; er.classList.add('show'); }
+      function reset() { go.disabled = false; go.textContent = 'Sign the agreement'; }
+      if (n.length < 3) return bad('Please type your full legal name.');
+      if (!/^[^@\s]+@[^@\s]+\.\w+$/.test(e)) return bad('Please add your email so we can send your signed copy.');
+      if (pad.empty()) return bad('Please draw your signature in the box.');
+      if (!c) return bad('Please tick the box to agree to sign electronically.');
+      go.disabled = true; go.textContent = 'Signing…';
+      RE.call('re-doc-sign', { token: t, name: n, email: e, png: pad.png(), consent: true }).then(function (j) {
+        if (j && j.ok) done('Agreement signed', RE.esc(j.message || ''));
+        else { reset(); bad((j && j.error) || 'Something went wrong.'); }
+      }).catch(function () { reset(); bad('We couldn\'t reach our signing system. Please try again in a few minutes, or reply to our email.'); });
+    });
+  }).catch(function () { note('We couldn\'t load the agreement just now. Please try again in a few minutes, or reply to our email.'); });
+})();
+</script>
+</body>
+</html>
