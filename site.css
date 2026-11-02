@@ -1,0 +1,121 @@
+/* Renov8ers LLC · Property Acquisitions (renov8ers.github.io/offers). Standalone: light, quiet, professional.
+   Matches the printed offer letter: white paper, charcoal ink, one amber accent. */
+:root{
+  --ink:#16181d;--ink2:#3b414c;--mute:#6b7280;--line:#e6e8ec;--line2:#d5d9e0;--bg:#f6f7f9;--card:#fff;
+  --amber:#c9831a;--amber2:#e39b2a;--amber-bg:#fdf6ea;--good:#1f8a5b;--bad:#b42318;
+  --r:14px;--shadow:0 1px 2px rgba(16,24,40,.05),0 12px 32px -12px rgba(16,24,40,.18);
+  --font:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font:16px/1.6 var(--font);color:var(--ink2);background:var(--bg);-webkit-font-smoothing:antialiased}
+a{color:var(--ink);text-underline-offset:3px}
+h1,h2,h3{color:var(--ink);letter-spacing:-.02em;line-height:1.15}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+
+/* top bar */
+.top{background:#fff;border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
+.mark{display:flex;align-items:center;gap:12px;text-decoration:none}
+.mark i{width:34px;height:34px;border-radius:8px;background:var(--ink);display:grid;place-items:center;color:var(--amber2);font:800 13px/1 var(--font);font-style:normal;letter-spacing:.02em}
+.mark b{display:block;font-size:15px;letter-spacing:.16em;color:var(--ink)}
+.mark small{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);font-weight:600}
+.top .contact{display:flex;gap:18px;font-size:14px;color:var(--mute)}
+.top .contact a{text-decoration:none;color:var(--ink2);font-weight:600;white-space:nowrap}
+.mark span{white-space:nowrap;min-width:0}
+
+/* hero */
+.hero{background:linear-gradient(180deg,#fff,var(--bg));border-bottom:1px solid var(--line);padding:56px 0 40px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);font-weight:700}
+.eyebrow::before{content:"";width:18px;height:2px;background:var(--amber)}
+.hero h1{font-size:clamp(30px,4.6vw,46px);margin:12px 0 12px;max-width:760px}
+.hero p{font-size:17.5px;max-width:640px;color:var(--ink2)}
+
+section{padding:40px 0}
+.grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:24px;align-items:start}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:28px}
+
+/* the offer */
+.offer{position:sticky;top:20px;overflow:hidden}
+.offer::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:linear-gradient(90deg,var(--amber),var(--amber2))}
+.k{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);font-weight:700}
+.addr{font-size:21px;font-weight:700;color:var(--ink);margin-top:6px;line-height:1.25}
+.town{color:var(--mute);font-size:14.5px}
+.amt{font-size:clamp(40px,5.4vw,54px);font-weight:800;color:var(--ink);letter-spacing:-.03em;line-height:1;margin:22px 0 4px;font-variant-numeric:tabular-nums}
+.amt-l{font-size:13.5px;color:var(--mute)}
+.facts{list-style:none;margin:20px 0 0;display:grid;gap:9px}
+.facts li{display:flex;gap:10px;align-items:center;font-size:14.5px;color:var(--ink2)}
+.facts li::before{content:"";width:18px;height:18px;flex:none;border-radius:50%;background:var(--amber-bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c9831a' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/11px no-repeat}
+.code{display:flex;justify-content:space-between;align-items:center;margin-top:22px;padding:12px 14px;border:1px dashed var(--line2);border-radius:10px;font-size:13.5px;color:var(--mute)}
+.code b{color:var(--ink);letter-spacing:.06em;font-size:15px}
+
+/* forms */
+.form h2{font-size:24px}
+.form .sub{color:var(--mute);margin:4px 0 20px}
+.sec{display:flex;align-items:center;gap:10px;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);font-weight:700;margin:22px 0 12px}
+.sec::after{content:"";flex:1;height:1px;background:var(--line)}
+.field{display:grid;gap:6px;margin-bottom:14px}
+label,.lbl{font-size:13.5px;font-weight:600;color:var(--ink)}
+.hint{font-weight:500;color:var(--mute)}
+input[type=text],input[type=tel],input[type=email],select,textarea{width:100%;min-height:46px;padding:11px 13px;border:1px solid var(--line2);border-radius:10px;background:#fff;color:var(--ink);font:inherit;font-size:15.5px;transition:border-color .15s,box-shadow .15s}
+textarea{min-height:96px;resize:vertical}
+select{appearance:none;-webkit-appearance:none;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2.4'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") right 12px center/16px no-repeat;padding-right:38px}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 4px rgba(201,131,26,.14)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.choice{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.choice label{display:flex;gap:10px;align-items:flex-start;padding:14px;border:1px solid var(--line2);border-radius:12px;cursor:pointer;background:#fff;transition:.15s}
+.choice label:has(input:checked){border-color:var(--amber);background:var(--amber-bg);box-shadow:0 0 0 3px rgba(201,131,26,.12)}
+.choice input{accent-color:var(--amber);width:18px;height:18px;margin-top:2px;flex:none}
+.choice b{display:block;color:var(--ink);font-weight:700}.choice span{font-size:13.5px;color:var(--mute);font-weight:500}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;font-weight:500;color:var(--ink2);margin:6px 0 18px}
+.consent input{accent-color:var(--amber);width:18px;height:18px;margin-top:2px;flex:none}
+.hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 22px;border-radius:10px;border:1px solid transparent;font:600 15.5px/1 var(--font);cursor:pointer;text-decoration:none;transition:background .15s,box-shadow .15s,transform .1s}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--ink);color:#fff}.btn-primary:hover{background:#000;box-shadow:0 8px 20px -10px rgba(0,0,0,.6)}
+.btn-ghost{background:#fff;color:var(--ink);border-color:var(--line2)}.btn-ghost:hover{border-color:var(--ink)}
+.btn-block{width:100%}.btn[disabled]{opacity:.65;cursor:progress}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.msg{display:none;margin-top:14px;padding:12px 14px;border-radius:10px;font-size:14.5px;font-weight:500}
+.msg.show{display:block}
+.msg.err{background:#fef3f2;border:1px solid #fecdca;color:var(--bad)}
+.fine{font-size:13px;color:var(--mute)}
+.done{text-align:center;padding:12px 4px}
+.done .tick{width:56px;height:56px;border-radius:50%;margin:0 auto 14px;display:grid;place-items:center;background:#ecfdf3;color:var(--good)}
+.done .tick svg{width:28px;height:28px;stroke:currentColor;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.done h2{font-size:24px;margin-bottom:6px}.done .big{font-size:40px;font-weight:800;color:var(--ink);margin:16px 0 4px}
+
+/* the agreement */
+.doc{border:1px solid var(--line);border-radius:12px;background:#fff;padding:26px 28px;max-height:520px;overflow:auto;font-size:14.5px;line-height:1.6;color:var(--ink2);
+  box-shadow:inset 0 -24px 24px -24px rgba(16,24,40,.18)}
+.doc .dk{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);font-weight:700}
+.doc h3{font-size:22px;margin:4px 0 16px}
+.doc .meta{display:grid;grid-template-columns:120px 1fr;gap:6px 14px;background:var(--bg);border-radius:10px;padding:14px 16px;margin-bottom:18px}
+.doc .meta span{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);font-weight:700;padding-top:3px}
+.doc .cl{display:grid;grid-template-columns:28px 1fr;gap:4px;margin-bottom:12px}
+.doc .cl i{font-style:normal;color:var(--amber);font-weight:700}.doc .cl b{display:block;color:var(--ink)}
+.doc .note{font-size:13px;color:var(--mute);font-style:italic}
+.pad{display:block;width:100%;height:170px;border:1px dashed var(--line2);border-radius:12px;touch-action:none;cursor:crosshair;
+  background:linear-gradient(transparent 128px,var(--line) 128px,var(--line) 129px,transparent 129px) #fff}
+
+/* how it works + disclosure */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.step{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px}
+.step b{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:8px;background:var(--ink);color:#fff;font-size:13px;margin-bottom:10px}
+.step h3{font-size:16px;margin-bottom:4px}.step p{font-size:14px;color:var(--mute)}
+.honest{margin-top:16px;padding:16px 18px;border-radius:12px;background:#fff;border:1px solid var(--line);font-size:14px;color:var(--ink2)}
+
+/* deals */
+.deals{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+.deal{display:block;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;transition:border-color .15s,transform .15s}
+.deal:hover{border-color:var(--ink);transform:translateY(-2px)}
+.deal .p{font-size:24px;font-weight:800;color:var(--ink);margin:6px 0}
+.tags{display:flex;flex-wrap:wrap;gap:6px}.tag{font-size:12px;font-weight:600;padding:4px 9px;border-radius:999px;background:var(--bg);border:1px solid var(--line);color:var(--ink2)}
+
+footer{border-top:1px solid var(--line);background:#fff;padding:28px 0 36px;margin-top:20px;font-size:13.5px;color:var(--mute)}
+footer .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:20px}
+footer b{color:var(--ink)}
+@media (max-width:880px){.grid{grid-template-columns:1fr}.offer{position:relative;top:0}.steps{grid-template-columns:1fr 1fr}footer .wrap{grid-template-columns:1fr}.top .contact span{display:none}}
+@media (max-width:560px){.row2,.choice,.steps{grid-template-columns:1fr}.card{padding:20px}.hero{padding:38px 0 28px}.doc{padding:18px}.doc .meta{grid-template-columns:1fr}.top .contact{gap:10px}.top .contact a[href^=mailto]{display:none}.mark b{font-size:13.5px;letter-spacing:.12em}.mark small{font-size:10px}.top .wrap{height:60px}}
+@media (max-width:420px){.top .contact a[href^=tel]{font-size:0}.top .contact a[href^=tel]::after{content:"Call us";font-size:14px}}
