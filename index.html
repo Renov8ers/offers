@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Your Cash Offer | Renov8ers LLC</title>
+<meta name="description" content="See your cash offer from Renov8ers LLC, accept it, or tell us the price that works for you.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#ffffff">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css?v=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2316181d'/%3E%3Ctext x='16' y='21' font-family='Arial' font-weight='700' font-size='12' fill='%23e39b2a' text-anchor='middle'%3ER8%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="mark" href="./" aria-label="Renov8ers LLC property acquisitions"><i>R8</i><span><b>RENOV8ERS LLC</b><small>Property Acquisitions</small></span></a>
+  <div class="contact"><span>Questions?</span><a href="tel:+15169868621">(516) 986-8621</a><a href="mailto:renov8ersllc@gmail.com">Email us</a></div>
+</div></header>
+<main id="main">
+<div class="hero"><div class="wrap">
+  <span class="eyebrow">Your cash offer</span>
+  <h1>Sell as-is, on your timeline, with no commissions.</h1>
+  <p>Enter the code from your letter to see your offer. Accept it, or tell us the price that works for you. It takes about a minute.</p>
+</div></div>
+<section><div class="wrap grid">
+  <aside class="card offer" id="card">
+    <div class="k">Offer for</div>
+    <div class="addr" id="o-addr">Your property</div>
+    <div class="town" id="o-town">Enter your offer code to load it</div>
+    <div class="amt" id="o-amt">$&mdash;</div>
+    <div class="amt-l" id="o-amt-l">What Renov8ers LLC offered</div>
+    <ul class="facts"><li>Sold as-is. Nothing to repair or clean</li><li>No commissions and no fees to you</li><li id="o-close">Close in about 30 days</li><li>No deposit required from you</li><li>A title company or attorney handles the closing</li></ul>
+    <div class="code"><span>Offer code</span><b id="o-code">&mdash;</b></div>
+  </aside>
+  <div class="card form" id="formbox">
+    <form id="f" novalidate>
+      <h2>Your answer</h2><p class="sub">Your answer goes straight to our acquisitions team. We reply within one business day.</p>
+      <div class="field"><label for="code">Offer code <span class="hint">(printed on your letter)</span></label><input type="text" id="code" name="code" placeholder="R8-XXXXXX" autocomplete="off" autocapitalize="characters"></div>
+      <div class="sec">Your details</div>
+      <div class="field"><label for="name">Full name</label><input type="text" id="name" name="name" required autocomplete="name"></div>
+      <div class="row2"><div class="field"><label for="phone">Phone</label><input type="tel" id="phone" name="phone" autocomplete="tel"></div>
+      <div class="field"><label for="email">Email</label><input type="email" id="email" name="email" autocomplete="email"></div></div>
+      <div class="sec">The property</div>
+      <div class="field"><label for="address">Property address</label><input type="text" id="address" name="address" required autocomplete="street-address"></div>
+      <div class="field"><label for="offered">What Renov8ers LLC offered</label><input type="text" id="offered" name="offered" inputmode="numeric" placeholder="$"></div>
+      <div class="choice" role="radiogroup" aria-label="Your decision">
+        <label><input type="radio" name="decision" value="accept" checked><div><b>I accept the offer</b><span>Review and sign the agreement next.</span></div></label>
+        <label><input type="radio" name="decision" value="counter"><div><b>I'd like a different price</b><span>Tell us your number below.</span></div></label>
+      </div>
+      <div class="field" id="ask-f" hidden><label for="asking">What you want for it</label><input type="text" id="asking" name="asking" inputmode="numeric" placeholder="$"></div>
+      <div class="row2"><div class="field"><label for="timeline">When do you want to close?</label><select id="timeline" name="timeline"><option>As soon as possible</option><option>Within 30 days</option><option>1 to 3 months</option><option>I'm flexible</option></select></div>
+      <div class="field"><label for="occupancy">Who lives there now?</label><select id="occupancy" name="occupancy"><option>I do</option><option>A tenant</option><option>It's vacant</option><option>A family member</option></select></div></div>
+      <div class="row2"><div class="field"><label for="condition">Condition</label><select id="condition" name="condition"><option>Move-in ready</option><option>Needs cosmetic updates</option><option>Needs major repairs</option><option>Not livable right now</option></select></div>
+      <div class="field"><label for="owed">Mortgage or liens owed <span class="hint">(roughly)</span></label><input type="text" id="owed" name="owed" inputmode="numeric" placeholder="$0 if none"></div></div>
+      <div class="row2"><div class="field"><label for="reason">Reason for selling <span class="hint">(optional)</span></label><select id="reason" name="reason"><option value="">Prefer not to say</option><option>Inherited the home</option><option>Moving or relocating</option><option>Too many repairs</option><option>Tired landlord</option><option>Financial reasons</option><option>Downsizing</option><option>Other</option></select></div>
+      <div class="field"><label for="best_time">Best time to reach you</label><select id="best_time" name="best_time"><option>Any time</option><option>Mornings</option><option>Afternoons</option><option>Evenings</option></select></div></div>
+      <div class="field"><label for="notes">Anything else we should know?</label><textarea id="notes" name="notes" placeholder="Repairs needed, timing, questions"></textarea></div>
+      <input class="hp" tabindex="-1" autocomplete="off" name="website" aria-hidden="true">
+      <label class="consent"><input type="checkbox" id="consent"> <span>Renov8ers LLC may contact me about this property by email or phone. I can opt out at any time.</span></label>
+      <button class="btn btn-primary btn-block" id="go" type="submit">Send my answer</button>
+      <div class="msg err" id="err" role="alert"></div>
+      <p class="fine" style="margin-top:16px;text-align:center"><a href="#" id="nothanks">No thanks, please don't contact me about this property</a></p>
+    </form>
+  </div>
+</div></section>
+<section style="padding-top:8px"><div class="wrap">
+  <div class="steps">
+    <div class="step"><b>1</b><h3>Review your offer</h3><p>A firm cash number for the property as it is today.</p></div>
+    <div class="step"><b>2</b><h3>Accept or counter</h3><p>Take it, or name your price. We reply within one business day.</p></div>
+    <div class="step"><b>3</b><h3>Sign online</h3><p>Read the agreement and sign from your phone. No printing.</p></div>
+    <div class="step"><b>4</b><h3>Close with a pro</h3><p>A title company or closing attorney handles the paperwork and funds.</p></div>
+  </div>
+  <div class="honest"><b>Plain disclosure.</b> Renov8ers LLC is a real estate investor, not a licensed agent, and we do not represent you. Our offers are below full market value because we buy as-is and cover the closing costs and risk, and we may assign our contract to another buyer for a fee. You are welcome to speak with an agent or attorney before deciding.</div>
+</div></section>
+</main>
+<footer><div class="wrap">
+  <div><b>Renov8ers LLC</b> · Property Acquisitions<br>Long Island, New York · (516) 986-8621 · <a href="mailto:renov8ersllc@gmail.com">renov8ersllc@gmail.com</a></div>
+  <div>Renov8ers LLC is a real estate investment company, not a licensed real estate broker or agent. We buy properties for our own account and may assign our contract to another buyer. You are always free to consult an attorney or agent.</div>
+</div></footer>
+<script src="engine-config.js?v=1"></script>
+<script src="site.js?v=1"></script>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); }, form = $('f'), TICK = '<div class="tick"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>';
+  function err(m) { $('err').textContent = m; $('err').classList.add('show'); }
+  function busy(on) { $('go').disabled = on; $('go').textContent = on ? 'Sending…' : 'Send my answer'; }
+  function setCard(o) {
+    $('o-addr').textContent = o.address; $('o-town').textContent = [o.city, o.state].filter(Boolean).join(', ');
+    $('o-close').textContent = 'Close in about ' + (o.close_days || 30) + ' days, or the date you choose';
+    if (o.offer) { RE.countUp($('o-amt'), o.offer); $('offered').value = RE.money(o.offer); }
+    else { $('o-amt').textContent = 'Name your price'; $('o-amt-l').textContent = 'Tell us what would work for you'; selectCounter(); }
+    if (!$('address').value) $('address').value = [o.address, o.city, o.state].filter(Boolean).join(', ');
+    if (!o.open) err(o.status === 'signed' ? 'This offer is already signed. We will be in touch about closing.' : 'This offer is closed. Reply to our email if you would still like to talk.');
+  }
+  function lookup(code) {
+    if (!code) return;
+    $('o-code').textContent = code.toUpperCase();
+    RE.call('re-offer-lookup', { code: code }).then(function (j) { if (j && j.ok) setCard(j); else if (j && j.error) err(j.error); }).catch(function () {});
+  }
+  function selectCounter() { form.querySelector('[value=counter]').checked = true; $('ask-f').hidden = false; }
+  form.addEventListener('change', function (e) { if (e.target.name === 'decision') $('ask-f').hidden = e.target.value !== 'counter'; });
+  $('code').addEventListener('change', function () { lookup($('code').value.trim()); });
+  function stop(e) {
+    if (e) e.preventDefault();
+    RE.call('re-offer-stop', { code: $('code').value.trim() }).catch(function () {});
+    $('formbox').innerHTML = '<div class="done">' + TICK + '<h2>Understood.</h2><p class="sub">We won\'t contact you about this property again. Thank you for your time.</p></div>';
+  }
+  $('nothanks').addEventListener('click', stop);
+  var code = RE.q('c'); if (code) { $('code').value = code.toUpperCase(); lookup(code); }
+  if (RE.q('stop')) setTimeout(stop, 300);
+  function fallbackMail(d) {
+    var lines = Object.keys(d).filter(function (k) { return d[k] && k !== 'consent' && k !== 'accept'; }).map(function (k) { return k + ': ' + d[k]; });
+    var href = 'mailto:renov8ersllc@gmail.com?subject=' + encodeURIComponent('My answer to offer ' + (d.code || '')) + '&body=' + encodeURIComponent(lines.join('\n'));
+    $('err').innerHTML = 'We couldn\'t send that just now. <a href="' + href + '">Email it to us instead</a> (everything is filled in), or call (516) 986-8621.';
+    $('err').classList.add('show');
+  }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault(); $('err').classList.remove('show');
+    var d = {}; new FormData(form).forEach(function (v, k) { d[k] = String(v).trim(); });
+    d.accept = d.decision === 'accept'; d.consent = $('consent').checked;
+    if (!d.name) return err('Please add your name.');
+    if (!d.email && (d.phone || '').replace(/\D/g, '').length < 10) return err('Please add an email or a phone number so we can reply.');
+    if (!d.address) return err('Please add the property address.');
+    if (!d.accept && !d.asking) return err('Please tell us the price that would work for you.');
+    if (!d.consent) return err('Please tick the box so we can contact you.');
+    busy(true);
+    RE.call('re-offer-reply', d).then(function (j) {
+      if (!j || !j.ok) { busy(false); return err((j && j.error) || 'Something went wrong. Please try again.'); }
+      var html = '<div class="done">' + TICK + '<h2>' + (j.result === 'accepted' ? 'Thank you. You\'re all set.' : 'Thank you.') + '</h2><p class="sub">' + RE.esc(j.message || '') + '</p>';
+      if (j.offer && (j.result === 'countered' || j.result === 'final')) html += '<div class="big">' + RE.money(j.offer) + '</div><p class="fine">Our updated offer. The details are in your email.</p>';
+      if (j.sign) html += '<p style="margin-top:18px"><a class="btn btn-primary" href="' + RE.esc(j.sign) + '">Review and sign the agreement</a></p>';
+      $('formbox').innerHTML = html + '</div>'; window.scrollTo({ top: 0, behavior: 'smooth' });
+    }).catch(function () { busy(false); fallbackMail(d); });
+  });
+})();
+</script>
+</body>
+</html>
