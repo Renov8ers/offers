@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Status | Renov8ers LLC</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#ffffff">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../site.css?v=2">
+</head>
+<body>
+<main id="main"><section><div class="wrap" style="text-align:center;padding:80px 0">
+  <div class="status-pill" id="st" role="status" aria-live="polite"><i></i><span>Checking…</span></div>
+  <p class="fine" style="margin-top:18px" id="when"></p>
+</div></section></main>
+<script src="../engine-config.js?v=1"></script>
+<script src="../site.js?v=1"></script>
+<script>
+(function () {
+  var el = document.getElementById('st'), when = document.getElementById('when');
+  function show(up) { el.className = 'status-pill ' + (up ? 'up' : 'down'); el.lastChild.textContent = up ? 'Up' : 'Down'; when.textContent = 'Checked ' + new Date().toLocaleTimeString(); }
+  function check() { RE.call('re-status', {}).then(function (r) { show(!!(r && r.ok)); }).catch(function () { show(false); }); }
+  check(); setInterval(check, 60000);
+})();
+</script>
+</body>
+</html>
