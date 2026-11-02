@@ -119,3 +119,21 @@ footer b{color:var(--ink)}
 @media (max-width:880px){.grid{grid-template-columns:1fr}.offer{position:relative;top:0}.steps{grid-template-columns:1fr 1fr}footer .wrap{grid-template-columns:1fr}.top .contact span{display:none}}
 @media (max-width:560px){.row2,.choice,.steps{grid-template-columns:1fr}.card{padding:20px}.hero{padding:38px 0 28px}.doc{padding:18px}.doc .meta{grid-template-columns:1fr}.top .contact{gap:10px}.top .contact a[href^=mailto]{display:none}.mark b{font-size:13.5px;letter-spacing:.12em}.mark small{font-size:10px}.top .wrap{height:60px}}
 @media (max-width:420px){.top .contact a[href^=tel]{font-size:0}.top .contact a[href^=tel]::after{content:"Call us";font-size:14px}}
+/* deal room (deals/?d=...): photos, facts, comps */
+.room{margin-bottom:18px;display:grid;gap:14px}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px}
+.gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;border:1px solid var(--line);display:block}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.fact{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px}
+.fact .k{font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--mute)}
+.fact .v{font-size:26px;font-weight:800;color:var(--ink);margin:6px 0 4px}
+.fact .s{font-size:13px;color:var(--ink2);line-height:1.45}
+.comps table{width:100%;border-collapse:collapse;font-size:14px;margin-top:10px}
+.comps th,.comps td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line)}
+.comps th{font-size:12px;color:var(--mute);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+@media (max-width:560px){.comps table{font-size:13px}.comps th:nth-child(2),.comps td:nth-child(2){display:none}}
+/* status page */
+.status-pill{display:inline-flex;align-items:center;gap:10px;font-size:28px;font-weight:800;padding:18px 28px;border-radius:999px;border:1px solid var(--line);background:#fff}
+.status-pill i{width:14px;height:14px;border-radius:50%;background:var(--mute)}
+.status-pill.up i{background:var(--good);box-shadow:0 0 0 6px rgba(31,138,91,.15)}
+.status-pill.down i{background:var(--bad);box-shadow:0 0 0 6px rgba(180,35,24,.12)}
