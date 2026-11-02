@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../site.css?v=1">
+<link rel="stylesheet" href="../site.css?v=2">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2316181d'/%3E%3Ctext x='16' y='21' font-family='Arial' font-weight='700' font-size='12' fill='%23e39b2a' text-anchor='middle'%3ER8%3C/text%3E%3C/svg%3E">
 </head>
 <body>
@@ -49,13 +49,30 @@
 <script>
 (function () {
   var d = RE.q('d'), list = document.getElementById('list'), deal = document.getElementById('deal'), TICK = '<div class="tick"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>';
+  function room(R, base) {   // the deal room: real photos, comps from public sales records, ARV band, buyer math, terms
+    if (!R || !R.address) return '';
+    var h = '';
+    if ((R.photos || []).length) h += '<div class="gallery">' + R.photos.map(function (u, i) { return '<a href="' + RE.esc(base + u) + '" target="_blank" rel="noopener"><img loading="lazy" src="' + RE.esc(base + u) + '" alt="Photo ' + (i + 1) + ' of ' + RE.esc(R.address) + '"></a>'; }).join('') + '</div>';
+    var facts = [];
+    if (R.arv) facts.push('<div class="fact"><div class="k">After-repair value</div><div class="v">' + RE.money(R.arv.value) + '</div><div class="s">Range ' + RE.money(R.arv.low) + ' to ' + RE.money(R.arv.high) + ' · ' + RE.esc(R.arv.confidence) + ' confidence</div></div>');
+    var m = R.buyer_math;
+    if (m && m.ok) facts.push('<div class="fact"><div class="k">Financed at ' + Number(m.rate30).toFixed(2) + '% (30-yr)</div><div class="v">' + RE.money(m.payment) + '/mo</div><div class="s">' + RE.money(m.down) + ' down, ' + RE.money(m.loan) + ' loan · ' + RE.esc(m.source || 'Freddie Mac PMMS') + ' ' + RE.esc(m.rate_date || '') + '</div></div>');
+    var t = R.terms || {};
+    facts.push('<div class="fact"><div class="k">Assignment terms</div><div class="v">' + RE.money(t.price || R.price) + '</div><div class="s">Earnest money ' + RE.money(t.emd || 0) + ' · inspection ' + (t.inspect_days || 0) + ' days · close in about ' + (t.close_days || 30) + ' days · ' + RE.esc(t.condition || 'as-is') + '</div></div>');
+    h += '<div class="facts">' + facts.join('') + '</div>';
+    if ((R.comps || []).length) h += '<div class="card comps"><h2>Recent sales nearby</h2><p class="sub">From public county sales records, brought to today\'s prices with the ZIP\'s Zillow Home Value Index.</p><table><thead><tr><th>Address</th><th>Sold</th><th>Price</th><th>Today</th></tr></thead><tbody>' +
+      R.comps.map(function (c) { return '<tr><td>' + RE.esc(c.address) + '</td><td>' + RE.esc(c.date) + '</td><td>' + RE.money(c.price) + '</td><td>' + RE.money(c.adjusted) + '</td></tr>'; }).join('') + '</tbody></table>' +
+      (R.arv ? '<p class="fine">' + RE.esc(R.arv.method) + '</p>' : '') + '</div>';
+    return '<div class="room">' + h + '</div>';
+  }
   function tags(x) { return '<div class="tags">' + (x.tags || []).map(function (t) { return '<span class="tag">' + RE.esc(t) + '</span>'; }).join('') + '</div>'; }
   RE.call('re-deals', d ? { d: d } : {}).then(function (j) {
     if (d) {
       list.innerHTML = '';
       if (!j || !j.ok) { deal.innerHTML = '<div class="card"><p class="sub">' + RE.esc((j && j.error) || 'This deal is not available.') + ' <a href="./">See all deals</a></p></div>'; return; }
-      var x = j.deal;
-      deal.innerHTML = '<div class="grid"><aside class="card offer"><div class="k">Assignment price</div><div class="addr">' + RE.esc(x.address) + '</div><div class="town">' + RE.esc([x.city, x.state].filter(Boolean).join(', ')) + '</div>' +
+      var x = j.deal, R = x.room || {};
+      var base = ((window.R8_ENGINE_URLS || [])[0] || '').replace(/\/$/, '');
+      deal.innerHTML = room(R, base) + '<div class="grid"><aside class="card offer"><div class="k">Assignment price</div><div class="addr">' + RE.esc(x.address) + '</div><div class="town">' + RE.esc([x.city, x.state].filter(Boolean).join(', ')) + '</div>' +
         '<div class="amt">' + RE.money(x.price) + '</div><div class="amt-l">' + (x.value ? 'Estimated value ' + RE.money(x.value) : 'Assignment price') + '</div><div style="margin-top:16px">' + tags(x) + '</div>' +
         '<p class="fine" style="margin-top:14px">Estimates only. Run your own comps and inspection.</p></aside>' +
         '<div class="card form"><h2>Claim this deal</h2><p class="sub">' + RE.esc(j.disclosure || '') + '</p><form id="c" novalidate><div class="field"><label for="cn">Your name or company</label><input type="text" id="cn"></div>' +
