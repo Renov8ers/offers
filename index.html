@@ -81,8 +81,7 @@
   <div>Renov8ers LLC is a real estate investment company, not a licensed real estate broker or agent. We buy properties for our own account and may assign our contract to another buyer. You are always free to consult an attorney or agent.</div>
 </div></footer>
 <script src="engine-config.js?v=1"></script>
-<script src="offer-codes.js?v=1"></script>
-<script src="site.js?v=2"></script>
+<script src="site.js?v=1"></script>
 <script>
 (function () {
   var $ = function (id) { return document.getElementById(id); }, form = $('f'), TICK = '<div class="tick"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>';
@@ -99,11 +98,7 @@
   function lookup(code) {
     if (!code) return;
     $('o-code').textContent = code.toUpperCase();
-    $('err').classList.remove('show');
-    function backup(msg) { RE.local(code).then(function (o) { if (o) setCard(o); else if (msg) err(msg); }); }
-    RE.call('re-offer-lookup', { code: code }).then(function (j) {
-      if (j && j.ok) setCard(j); else if (j && j.closed) err(j.error); else backup(j && j.error);
-    }).catch(function () { backup('We couldn\'t load that offer right now. Check the code, or call (516) 986-8621.'); });
+    RE.call('re-offer-lookup', { code: code }).then(function (j) { if (j && j.ok) setCard(j); else if (j && j.error) err(j.error); }).catch(function () {});
   }
   function selectCounter() { form.querySelector('[value=counter]').checked = true; $('ask-f').hidden = false; }
   form.addEventListener('change', function (e) { if (e.target.name === 'decision') $('ask-f').hidden = e.target.value !== 'counter'; });
